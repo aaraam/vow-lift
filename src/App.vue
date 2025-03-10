@@ -3,76 +3,40 @@
 		<div class="header">
 			<div class="logo">
 				<div class="logo-icon">
-					<svg
-						viewBox="0 0 34 34"
-						fill="none"
-						xmlns="http://www.w3.org/2000/svg"
-					>
-						<path
-							d="M17 2L2 17L17 32L32 17L17 2Z"
-							stroke="url(#gold-gradient)"
-							stroke-width="2"
-						/>
-						<path
-							d="M17 8L8 17L17 26L26 17L17 8Z"
-							fill="url(#gold-gradient)"
-							fill-opacity="0.4"
-						/>
+					<svg viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+						<path d="M17 2L2 17L17 32L32 17L17 2Z" stroke="url(#gold-gradient)" stroke-width="2" />
+						<path d="M17 8L8 17L17 26L26 17L17 8Z" fill="url(#gold-gradient)" fill-opacity="0.4" />
 						<defs>
-							<linearGradient
-								id="gold-gradient"
-								x1="2"
-								y1="2"
-								x2="32"
-								y2="32"
-								gradientUnits="userSpaceOnUse"
-							>
+							<linearGradient id="gold-gradient" x1="2" y1="2" x2="32" y2="32"
+								gradientUnits="userSpaceOnUse">
 								<stop offset="0%" stop-color="#FFD700" />
 								<stop offset="100%" stop-color="#B8860B" />
 							</linearGradient>
 						</defs>
 					</svg>
 				</div>
-				<span class="logo-text"
-					>VOW<span class="logo-accent">Lift</span></span
-				>
+				<span class="logo-text">VOW<span class="logo-accent">Lift</span></span>
 			</div>
 			<div class="connection-area">
 				<div v-if="account" class="account-info">
 					<div class="account-badge">
 						<span class="dot"></span>
-						<span class="account-text"
-							>{{ account.substring(0, 6) }}...{{
-								account.substring(account.length - 4)
-							}}</span
-						>
+						<span class="account-text">{{ account.substring(0, 6) }}...{{
+							account.substring(account.length - 4)
+						}}</span>
 					</div>
 					<div class="balance-display">{{ balance }} ETH</div>
 				</div>
-				<button
-					class="connect-button"
-					@click="toggleConnection"
-					:class="{ connected: account }"
-				>
+				<button class="wallet-connect-button" @click="toggleConnection" :class="{ connected: account }"> <svg
+						width="20" height="20" viewBox="0 0 96 96" fill="none" xmlns="http://www.w3.org/2000/svg"
+						class="wc-icon">
+						<path
+							d="M25.3833 34.9147C42.0213 18.9547 68.9787 18.9547 85.6167 34.9147L87.5653 36.7653C88.452 37.608 88.452 39.0013 87.5653 39.844L80.152 46.9147C79.708 47.3373 79.0013 47.3373 78.5587 46.9147L75.7507 44.2507C64.34 33.3587 46.66 33.3587 35.2493 44.2507L32.2573 47.0587C31.8133 47.4813 31.108 47.4813 30.664 47.0587L23.252 39.988C22.364 39.1453 22.364 37.752 23.252 36.9093L25.3833 34.9147ZM94.1093 42.968L100.652 49.1853C101.54 50.028 101.54 51.4213 100.652 52.264L73.5187 78.0907C72.632 78.9333 71.1827 78.9333 70.296 78.0907C70.296 78.0907 70.296 78.0907 70.296 78.0907L51.8067 60.5293C51.584 60.3187 51.2387 60.3187 51.0173 60.5293C51.0173 60.5293 51.0173 60.5293 51.0173 60.5293L32.528 78.0907C31.6413 78.9333 30.192 78.9333 29.3053 78.0907C29.3053 78.0907 29.3053 78.0907 29.3053 78.0907L2.348 52.264C1.46133 51.4213 1.46133 50.028 2.348 49.1853L8.89067 42.968C9.77733 42.1253 11.2267 42.1253 12.1133 42.968L30.6027 60.5293C30.8253 60.74 31.1707 60.74 31.392 60.5293C31.392 60.5293 31.392 60.5293 31.392 60.5293L49.8813 42.968C50.768 42.1253 52.2173 42.1253 53.104 42.968C53.104 42.968 53.104 42.968 53.104 42.968L71.5933 60.5293C71.816 60.74 72.1613 60.74 72.3827 60.5293L90.872 42.968C91.7587 42.1253 93.208 42.1253 94.0947 42.968L94.1093 42.968Z"
+							fill="currentColor" />
+					</svg>
 					<span class="button-icon">{{ account ? '✓' : '↗' }}</span>
 					<span>{{ account ? 'Disconnect' : 'Connect Wallet' }}</span>
 				</button>
-				<!-- <button class="wallet-connect-button" @click="">
-					<svg
-						width="20"
-						height="20"
-						viewBox="0 0 96 96"
-						fill="none"
-						xmlns="http://www.w3.org/2000/svg"
-						class="wc-icon"
-					>
-						<path
-							d="M25.3833 34.9147C42.0213 18.9547 68.9787 18.9547 85.6167 34.9147L87.5653 36.7653C88.452 37.608 88.452 39.0013 87.5653 39.844L80.152 46.9147C79.708 47.3373 79.0013 47.3373 78.5587 46.9147L75.7507 44.2507C64.34 33.3587 46.66 33.3587 35.2493 44.2507L32.2573 47.0587C31.8133 47.4813 31.108 47.4813 30.664 47.0587L23.252 39.988C22.364 39.1453 22.364 37.752 23.252 36.9093L25.3833 34.9147ZM94.1093 42.968L100.652 49.1853C101.54 50.028 101.54 51.4213 100.652 52.264L73.5187 78.0907C72.632 78.9333 71.1827 78.9333 70.296 78.0907C70.296 78.0907 70.296 78.0907 70.296 78.0907L51.8067 60.5293C51.584 60.3187 51.2387 60.3187 51.0173 60.5293C51.0173 60.5293 51.0173 60.5293 51.0173 60.5293L32.528 78.0907C31.6413 78.9333 30.192 78.9333 29.3053 78.0907C29.3053 78.0907 29.3053 78.0907 29.3053 78.0907L2.348 52.264C1.46133 51.4213 1.46133 50.028 2.348 49.1853L8.89067 42.968C9.77733 42.1253 11.2267 42.1253 12.1133 42.968L30.6027 60.5293C30.8253 60.74 31.1707 60.74 31.392 60.5293C31.392 60.5293 31.392 60.5293 31.392 60.5293L49.8813 42.968C50.768 42.1253 52.2173 42.1253 53.104 42.968C53.104 42.968 53.104 42.968 53.104 42.968L71.5933 60.5293C71.816 60.74 72.1613 60.74 72.3827 60.5293L90.872 42.968C91.7587 42.1253 93.208 42.1253 94.0947 42.968L94.1093 42.968Z"
-							fill="currentColor"
-						/>
-					</svg>
-					<span>WalletConnect</span>
-				</button> -->
 			</div>
 		</div>
 
@@ -80,11 +44,7 @@
 			<h2 class="card-title">Lift Assets to Cross-Chain</h2>
 			<div class="card-body">
 				<div class="dropdown">
-					<button
-						class="token-select"
-						@click="toggleDropdown"
-						:disabled="!account"
-					>
+					<button class="token-select" @click="toggleDropdown" :disabled="!account">
 						<span v-if="selectedToken" class="token-selected">
 							<span class="token-icon">{{
 								selectedToken.charAt(0)
@@ -93,18 +53,10 @@
 						</span>
 						<span v-else>Select Token ▼</span>
 					</button>
-					<div
-						v-if="dropdownOpen"
-						class="dropdown-backdrop"
-						@click="toggleDropdown"
-					></div>
+					<div v-if="dropdownOpen" class="dropdown-backdrop" @click="toggleDropdown"></div>
 					<ul v-if="dropdownOpen" class="dropdown-menu">
-						<li
-							v-for="(address, token) in tokens"
-							:key="token"
-							@click="selectToken(token, address)"
-							class="dropdown-item"
-						>
+						<li v-for="(address, token) in tokens" :key="token" @click="selectToken(token, address)"
+							class="dropdown-item">
 							<span class="token-icon">{{
 								token.charAt(0)
 							}}</span>
@@ -116,18 +68,9 @@
 				<div class="input-group">
 					<label>Amount</label>
 					<div class="input-with-actions">
-						<input
-							v-model="amount"
-							type="number"
-							placeholder="0.0"
-							class="amount-input"
-							:disabled="!account"
-						/>
-						<button
-							v-if="account"
-							class="max-button"
-							@click="setMaxAmount"
-						>
+						<input v-model="amount" type="number" placeholder="0.0" class="amount-input"
+							:disabled="!account" />
+						<button v-if="account" class="max-button" @click="setMaxAmount">
 							MAX
 						</button>
 					</div>
@@ -145,12 +88,9 @@
 					</div>
 				</div>
 
-				<button
-					class="lift-button"
-					@click="showConfirmationModal"
+				<button class="lift-button" @click="showConfirmationModal"
 					:disabled="!account || !selectedToken || !amount"
-					:class="{ ready: account && selectedToken && amount }"
-				>
+					:class="{ ready: account && selectedToken && amount }">
 					<span class="lift-icon">↗</span>
 					<span>Lift Assets</span>
 				</button>
@@ -167,18 +107,11 @@
 		</div>
 
 		<!-- Confirmation Modal -->
-		<div
-			v-if="confirmModalVisible"
-			class="modal-backdrop"
-			@click.self="confirmModalVisible = false"
-		>
+		<div v-if="confirmModalVisible" class="modal-backdrop" @click.self="confirmModalVisible = false">
 			<div class="modal-container">
 				<div class="modal-header">
 					<h3>Confirm Transaction</h3>
-					<button
-						class="close-button"
-						@click="confirmModalVisible = false"
-					>
+					<button class="close-button" @click="confirmModalVisible = false">
 						×
 					</button>
 				</div>
@@ -207,10 +140,7 @@
 					</div>
 				</div>
 				<div class="modal-footer">
-					<button
-						class="modal-button cancel"
-						@click="confirmModalVisible = false"
-					>
+					<button class="modal-button cancel" @click="confirmModalVisible = false">
 						Cancel
 					</button>
 					<button class="modal-button confirm" @click="lift">
@@ -225,27 +155,17 @@
 			<div class="modal-container status-modal">
 				<div class="modal-header">
 					<h3>{{ statusModalTitle }}</h3>
-					<button
-						v-if="canCloseStatusModal"
-						class="close-button"
-						@click="statusModalVisible = false"
-					>
+					<button v-if="canCloseStatusModal" class="close-button" @click="statusModalVisible = false">
 						×
 					</button>
 				</div>
 				<div class="modal-body">
 					<div class="status-icon" :class="statusModalIcon"></div>
 					<div class="modal-message">{{ statusModalMessage }}</div>
-					<div
-						v-if="statusModalLoading"
-						class="loading-spinner"
-					></div>
+					<div v-if="statusModalLoading" class="loading-spinner"></div>
 				</div>
 				<div class="modal-footer" v-if="canCloseStatusModal">
-					<button
-						class="modal-button confirm"
-						@click="statusModalVisible = false"
-					>
+					<button class="modal-button confirm" @click="statusModalVisible = false">
 						Close
 					</button>
 				</div>
@@ -257,9 +177,70 @@
 <script>
 import { ethers } from 'ethers';
 import abi from './abi.js';
+import { ref, onMounted } from "vue";
+import { createAppKit, useAppKit } from "@reown/appkit/vue";
+import { EthersAdapter } from "@reown/appkit-adapter-ethers";
+import { mainnet, arbitrum, sepolia } from "@reown/appkit/networks";
 
 export default {
 	name: 'LiftForm',
+	setup() {
+		const appKit = ref(null);
+		const modal = ref(null);
+		const connectionStatus = ref("disconnected");
+
+		const initializeAppKit = () => {
+			try {
+				appKit.value = createAppKit({
+					adapters: [new EthersAdapter()],
+					networks: [mainnet, arbitrum, sepolia],
+					metadata: {
+						name: "Wallet Connect",
+						description: "Sample wallet connect implementation",
+						url: window.location.origin,
+						icons: [""],
+					},
+					projectId: "2263bdc6304b904234ce18a9b711524a",
+					features: {
+						analytics: false,
+						providers: {
+							ethereum: { rpcUrl: "https://mainnet.infura.io/v3/53a4c18146a64277bd80ad2646045b49" },
+							arbitrum: { rpcUrl: "https://arbitrum-mainnet.infura.io/v3/53a4c18146a64277bd80ad2646045b49" },
+							sepolia: { rpcUrl: "https://sepolia.infura.io/v3/53a4c18146a64277bd80ad2646045b49" },
+						},
+					},
+				});
+
+				modal.value = useAppKit();
+				console.log("AppKit initialized successfully");
+			} catch (error) {
+				console.error("Failed to initialize AppKit:", error);
+				connectionStatus.value = "error";
+			}
+		};
+
+		const safeGetProvider = async () => {
+			try {
+				if (!appKit.value || typeof appKit.value.getProvider !== "function") return null;
+				return await appKit.value.getProvider("eip155");
+			} catch (error) {
+				console.error("Error in safeGetProvider:", error);
+				return null;
+			}
+		};
+
+		onMounted(() => {
+			initializeAppKit();
+		});
+
+		return {
+			appKit,
+			modal,
+			safeGetProvider,
+			connectionStatus,
+			initializeAppKit
+		};
+	},
 	data() {
 		return {
 			dropdownOpen: false,
@@ -284,6 +265,7 @@ export default {
 			statusModalIcon: '',
 			statusModalLoading: false,
 			canCloseStatusModal: true,
+			connectionStatus: "disconnected",
 		};
 	},
 	methods: {
@@ -291,128 +273,84 @@ export default {
 			if (this.account) {
 				this.account = '';
 				this.balance = '0.00';
+				this.connectionStatus = 'disconnected';
+				console.log("Wallet disconnected.");
 				return;
 			}
-			if (window.ethereum) {
-				try {
-					const accounts = await window.ethereum.request({
-						method: 'eth_requestAccounts',
-					});
-					this.account = accounts[0];
 
-					// Ensure the user is on Sepolia
-					await this.ensureSepoliaNetwork();
+			try {
+				console.log("Attempting to connect wallet");
+				this.connectionStatus = "connecting";
 
-					await this.fetchBalance();
-				} catch (error) {
-					console.error('Error connecting wallet:', error);
-					this.showStatusModal(
-						'Connection Failed',
-						error.message || 'Could not connect to wallet',
-						'error'
-					);
+				if (!this.modal || typeof this.modal.open !== "function") {
+					throw new Error("Wallet modal not initialized");
 				}
-			} else {
+
+				// Open wallet selection modal
+				await this.modal.open();
+
+				// Wait for wallet selection
+				let address = null;
+				while (!address) {
+					await new Promise((resolve) => setTimeout(resolve, 500));
+					address = await this.appKit.getAddress();
+				}
+
+				this.account = address;
+				console.log("Connected Wallet:", address);
+
+				// Get provider after wallet is selected
+				const provider = await this.safeGetProvider();
+				if (!provider) {
+					throw new Error("Provider is not available after wallet connection");
+				}
+
+				// Ensure the user is on Sepolia (if needed)
+				await this.ensureSepoliaNetwork(provider);
+
+				// Fetch user's balance
+				await this.fetchBalance();
+
+				this.connectionStatus = "connected";
+				console.log("Wallet connected successfully.");
+			} catch (error) {
+				console.error("Error connecting wallet:", error);
+				this.connectionStatus = "error";
 				this.showStatusModal(
-					'Wallet Not Found',
-					'Please install MetaMask or another Ethereum wallet',
+					'Connection Failed',
+					error.message || 'Could not connect to wallet',
 					'error'
 				);
 			}
 		},
-		async ensureSepoliaNetwork() {
+		async ensureSepoliaNetwork(provider) {
 			try {
-				const currentNetwork = await window.ethereum.request({
-					method: 'net_version',
-				});
-				if (currentNetwork !== '11155111') {
-					this.showStatusModal(
-						'Switching Network',
-						'Please confirm network switch to Sepolia in your wallet',
-						'loading',
-						true
-					);
-					this.canCloseStatusModal = false;
+				// Get the current chain ID
+				const chainId = await provider.request({ method: 'eth_chainId' });
 
-					await window.ethereum.request({
+				// Sepolia chain ID is 0xaa36a7 (in hex)
+				if (chainId !== '0xaa36a7') {
+					// Prompt user to switch to Sepolia
+					await provider.request({
 						method: 'wallet_switchEthereumChain',
-						params: [
-							{
-								chainId: '0xAA36A7',
-								rpcUrls: [
-									'https://rpc.sepolia.org',
-									'https://ethereum-sepolia.blockpi.network/v1/rpc/public',
-								],
-							},
-						], // Sepolia Chain ID in Hex (11155111)
+						params: [{ chainId: '0xaa36a7' }],
 					});
-
-					this.statusModalVisible = false;
-					this.canCloseStatusModal = true;
 				}
 			} catch (error) {
-				// If Sepolia is not available, add it
-				if (error.code === 4902) {
-					try {
-						this.showStatusModal(
-							'Adding Network',
-							'Please confirm adding Sepolia network in your wallet',
-							'loading',
-							true
-						);
-						this.canCloseStatusModal = false;
-
-						await window.ethereum.request({
-							method: 'wallet_addEthereumChain',
-							params: [
-								{
-									chainId: '0xAA36A7',
-									chainName: 'Ethereum Sepolia',
-									nativeCurrency: {
-										name: 'Sepolia ETH',
-										symbol: 'ETH',
-										decimals: 18,
-									},
-									rpcUrls: [
-										'https://rpc.sepolia.org',
-										'https://ethereum-sepolia.blockpi.network/v1/rpc/public',
-									],
-									blockExplorerUrls: [
-										'https://sepolia.etherscan.io/',
-									],
-								},
-							],
-						});
-
-						this.statusModalVisible = false;
-						this.canCloseStatusModal = true;
-					} catch (addError) {
-						console.error(
-							'Error adding Sepolia network:',
-							addError
-						);
-						this.showStatusModal(
-							'Network Error',
-							'Failed to add Sepolia network',
-							'error'
-						);
-						this.canCloseStatusModal = true;
-					}
-				} else {
-					console.error('Error switching network:', error);
-					this.showStatusModal(
-						'Network Error',
-						'Failed to switch to Sepolia network',
-						'error'
-					);
-					this.canCloseStatusModal = true;
-				}
+				console.error('Error switching network:', error);
+				throw new Error('Please switch to the Sepolia test network');
 			}
 		},
 		async fetchBalance() {
 			try {
-				const provider = new ethers.BrowserProvider(window.ethereum);
-				const balance = await provider.getBalance(this.account);
+				if (!this.account) return;
+				const provider = await this.safeGetProvider();
+				if (!provider) throw new Error("Provider not available");
+				const balance = await provider.request({
+					method: 'eth_getBalance',
+					params: [this.account, 'latest'],
+				});
+
 				this.balance = ethers.formatEther(balance).slice(0, 6);
 			} catch (error) {
 				console.error('Error fetching balance:', error);
@@ -606,8 +544,7 @@ export default {
 				if (receipt.status === 1) {
 					this.showStatusModal(
 						'Success',
-						`Your ${this.amount} ${
-							this.selectedToken
+						`Your ${this.amount} ${this.selectedToken
 						} has been lifted to ${this.recipient.substring(
 							0,
 							10
@@ -810,12 +747,10 @@ body {
 	left: -100%;
 	width: 100%;
 	height: 100%;
-	background: linear-gradient(
-		90deg,
-		transparent,
-		rgba(255, 255, 255, 0.1),
-		transparent
-	);
+	background: linear-gradient(90deg,
+			transparent,
+			rgba(255, 255, 255, 0.1),
+			transparent);
 	transition: 0.6s;
 }
 
@@ -877,12 +812,10 @@ body {
 	left: -1px;
 	right: -1px;
 	height: 1px;
-	background: linear-gradient(
-		90deg,
-		transparent,
-		var(--gold-light),
-		transparent
-	);
+	background: linear-gradient(90deg,
+			transparent,
+			var(--gold-light),
+			transparent);
 	opacity: 0.3;
 	border-radius: 16px 16px 0 0;
 }
@@ -943,11 +876,9 @@ body {
 	justify-content: center;
 	width: 28px;
 	height: 28px;
-	background: linear-gradient(
-		135deg,
-		var(--primary-color),
-		var(--primary-dark)
-	);
+	background: linear-gradient(135deg,
+			var(--primary-color),
+			var(--primary-dark));
 	color: white;
 	border-radius: 50%;
 	margin-right: 10px;
@@ -1117,12 +1048,10 @@ body {
 	left: -100%;
 	width: 100%;
 	height: 100%;
-	background: linear-gradient(
-		90deg,
-		transparent,
-		rgba(255, 255, 255, 0.1),
-		transparent
-	);
+	background: linear-gradient(90deg,
+			transparent,
+			rgba(255, 255, 255, 0.1),
+			transparent);
 	transition: 0.6s;
 }
 
@@ -1203,12 +1132,10 @@ body {
 	left: -1px;
 	right: -1px;
 	height: 1px;
-	background: linear-gradient(
-		90deg,
-		transparent,
-		var(--gold-light),
-		transparent
-	);
+	background: linear-gradient(90deg,
+			transparent,
+			var(--gold-light),
+			transparent);
 	opacity: 0.3;
 	border-radius: 16px 16px 0 0;
 }
@@ -1402,6 +1329,7 @@ body {
 	0% {
 		transform: rotate(0deg);
 	}
+
 	100% {
 		transform: rotate(360deg);
 	}

@@ -5,4 +5,7 @@ import vue from '@vitejs/plugin-vue'
 export default defineConfig({
   base: '/vow-lift/',
   plugins: [vue()],
+  define: {
+    'process.env': {} // Polyfill process.env
+  },
 })
