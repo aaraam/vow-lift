@@ -410,22 +410,26 @@ export default {
 			}
 
 			try {
-				const provider = new ethers.BrowserProvider(window.ethereum);
-				const signer = await provider.getSigner();
+				console.log('Lifting', this.amount, this.selectedToken);
+
+				const provider = await this.safeGetProvider();
+				if(!provider){
+					throw new Error('Provider is not available after wallet connection');
+				}
+
+				await this.ensureSepoliaNetwork(provider);
+
+				const signer = await new ethers.BrowserProvider(provider).getSigner();
+
 				const contract = new ethers.Contract(
 					this.contractAddress,
 					abi,
 					signer
 				);
 
-				// Convert recipient to bytes format (this assumes the recipient is a valid T2 public key)
-				const recipientBytes = ethers.toUtf8Bytes(this.recipient);
-
 				// Convert amount to Wei or token units
 				let parsedAmount;
 				let tx;
-
-				console.log('Lifting', this.amount, this.selectedToken);
 
 				if (this.selectedToken === 'ETH') {
 					// For ETH, convert to Wei
